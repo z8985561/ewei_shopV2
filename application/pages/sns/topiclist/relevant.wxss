@@ -1,0 +1,9 @@
+/* pages/topiclist/relevant.wxss */
+.clear-both {clear: both;}
+.float-left {float: left;}
+.float-right {float: right;}
+.snsplate {clear: both;margin-top: 5rpx;}
+.recommend {width: 100%;height: 180rpx}
+.imgclass {margin: 30rpx;width: 120rpx;height: 120rpx;border-radius: 50%;}
+.s1 {margin-top: 45rpx;font-size: 33rpx;}
+.s2 {margin-top: 10rpx;font-size: 31rpx;color: #555555;}

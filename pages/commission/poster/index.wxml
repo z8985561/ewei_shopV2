@@ -1,0 +1,51 @@
+<view class='poster {{full?"full":""}}'>
+    <view wx:if="{{!full}}" class='poster_box' bindtouchstart="touchStart" bindtouchmove="touchMove" catchtouchend="touchEnd" style="margin-left:{{-left}}px;width:{{posterboxwidth}}px">
+        <view wx:for='{{posterArr}}' class='posterimg poster_show' style='width:{{posterwidth}}px'>
+            <image class="image" wx:if='{{item.thumb}}' src='{{item.thumb}}' bindload="loadImg"></image>
+            <view wx:if='{{!item.thumb}}' class='loading '>
+                <view class='sk-three-bounce'>
+                    <view class="sk-child sk-bounce1"></view>
+                    <view class="sk-child sk-bounce2"></view>
+                    <view class="sk-child sk-bounce3"></view>
+                </view>
+            </view>
+            <image wx:if='{{item.thumb && !showloading}}' class='check' src='{{check}}' catchtap='enlarge'></image>
+        </view>
+    </view>
+    <view class='pre' bindtap='pre' wx:if="{{ index >0}}">
+        <text class='icox icox-jiantou'></text>
+        <text class='icox icox-jiantou'></text>
+    </view>
+    <view class='next' bindtap='next' wx:if="{{ index<posterArr.length-1 }}">
+        <text class='icox icox-fanhui1'></text>
+        <text class='icox icox-fanhui1'></text>
+    </view>
+    <view wx:if='{{full}}' class='poster_box' bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" style='margin-left:{{-left}}px;width:{{posterboxwidth}}px'>
+        <view wx:for='{{posterArr}}' class='posterimg poster_show' style='width:{{posterwidth}}px;height:{{windowHeight}}px'>
+            <view wx:if='{{!item.poster}}' class='loading '>
+                <view class='sk-three-bounce'>
+                    <view class="sk-child sk-bounce1"></view>
+                    <view class="sk-child sk-bounce2"></view>
+                    <view class="sk-child sk-bounce3"></view>
+                </view>
+            </view>
+            <image wx:if='{{item.poster}}' src='{{item.poster}}' style='width:100%;height:{{lgimgheight}}rpx' bindload="loadImg" mode="widthFix"></image>
+        </view>
+    </view>
+    <include src='/pages/common/get-coupon.wxml' />
+</view>
+
+<view class='tips' wx:if='{{!full}}'>
+    <view class='savepic' bindtap='savePicture'>保存图片</view>
+    <text class='icox icox-taiyang1' style='color:#ffd800'></text>
+    保存至相册
+</view>
+<view class='pos_bot' wx:if='{{full}}'>
+    <text class='icox icox-taiyang1' style='color:#ffd800'></text>
+    左右滑动切换模版
+    <text class='btn btn-danger btn-sm' bindtap='savePicture'>保存图片</text>
+    <text class='btn btn-danger-o btn-sm' bindtap='ensmall'>返回选择</text>
+</view>
+<view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
+    <view class="text">{{FoxUIToast.text}}</view>
+</view>

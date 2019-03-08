@@ -1,0 +1,18 @@
+<form bindsubmit="formSubmits">
+<view wx:if="{{pid == '0' }}" class="ctext">我要投诉的是：<text style="color:red;">{{nickname}}</text>的话题 </view>
+<view wx:else class="ctext">我要投诉的是：<text style="color:red;">{{nickname}}</text>的评论 </view>
+<view class="ctext">请您选择投诉类别：</view>
+<view class="ctext">
+<radio-group name="complaincate">
+  <label wx:if="{{cates}}"  wx:for='{{cates}}' wx:for-item="cate" wx:for-index='com' wx:key="coms">
+    <radio value="{{cate.id}}" />{{cate.name}}
+  </label>
+  <radio value="-1">其他</radio>
+</radio-group>
+</view>
+<input type="text" hidden="{{true}}" name="id" value="{{id}}"></input>
+<textarea name="content" placeholder="内容 10-1000个字" class="post-input" rows="8" minlength="10" maxlength="1000"></textarea>
+<view>
+</view>
+<button formType="submit" class="publishbtn">提交审核</button>
+</form>

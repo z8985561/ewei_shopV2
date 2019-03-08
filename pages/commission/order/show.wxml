@@ -1,0 +1,53 @@
+<block wx:if='{{show||1==1}}'>
+  <view class='page navbar order'>
+  <scroll-view scroll-x="true" style="height:80rpx;position: fixed; top: 0; z-index: 1000;">
+    <view class="orderscroll" style="width:1000rpx">
+      <view data-type='' bindtap='selected' class='item {{status == ""?"active":""}}'>全部</view>
+      <view data-type='0' bindtap='selected' class='item {{status == "0"?"active":""}}'>待付款</view>
+      <view data-type='1' bindtap='selected' class='item {{status == 1?"active":""}}'>待发货</view>
+      <view data-type='2' bindtap='selected' class='item {{status == 2?"active":""}}'>待收货</view>
+      <view data-type='3' bindtap='selected' class='item {{status == 3?"active":""}}'>已完成</view>
+    </view>
+  </scroll-view>
+    <block wx:if='{{list.length != 0}}'>
+      <view class='contain'>
+        <block wx:for='{{list}}' wx:for-item='item' wx:for-index='index' wx:key="list">
+          <view class='fui-list-group noclick'>
+              <view class='fui-list-group-title'>
+                <view class='order-num'>订单号：<text>{{item.ordersn}}</text></view>
+              <view class='statuscss'>{{item.statusstr}}</view>
+          </view>
+          <block wx:for='{{item.goods[0].goods}}' wx:for-item='val' wx:for-index='key' wx:key="goods">
+            <view class='fui-list goods-info'>
+              <view class='fui-list-media'>
+                <image src='{{val.thumb}}' class='round goods_img'></image>
+              </view>
+              <view class='fui-list-inner'>
+                <view class='text text-left'>{{val.title}}</view>
+                <view class='subtitle text-left'>{{val.optiontitle}}</view>
+              </view>
+              <view class='num'>
+                <view class='text-right'>￥<text>{{val.price}}</text></view>
+              <view class='text-right'>x<text>{{val.total}}</text></view>
+      </view>
+  </view>
+  </block>
+  <view class='fui-list list-padding'>
+    <text class='fui-list-inner text-right totle'>共<text class='text-danger'>{{item.goods.length}}</text>个商品 实付<text class='text-danger'>￥<text>{{item.price}}</text></text></text>
+  </view>
+  </view>
+  </block>
+  </view>
+  </block>
+  <block wx:if='{{list.length == 0 && empty}}'>
+    <view class='center'>
+      <view class='empty'>
+        <image class='light' src='/static/images/icon/lights-128.png'></image>
+        <view class='text-cancel'>暂时没有任何订单</view>
+        <navigator openType='redirect' url='/pages/index/index' class='btn btn-default-o'>到处逛逛</navigator>
+      </view>
+    </view>
+  </block>
+  <include src='/pages/common/menu.wxml' />
+  </view>
+</block>

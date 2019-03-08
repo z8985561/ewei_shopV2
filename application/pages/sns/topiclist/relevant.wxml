@@ -1,0 +1,21 @@
+<!--pages/topiclist/relevant.wxml-->
+<view wx:if="{{board}}" class="snsplate">
+  <block wx:for='{{board}}' wx:for-item="boards" wx:for-index='bos' wx:key="boarded">
+  <navigator class="recommend clear-both" url="/application/pages/sns/topiclist/index?id={{boards.id}}">
+    <view class="float-left" >
+      <image class="imgclass" src="{{boards.logo}}"></image>
+    </view>
+    <view class="float-left">
+      <view class="s1 clear-both">{{boards.title}}</view>
+      <view class="s2 clear-both">话题数{{boards.postcount}} 关注数{{boards.followcount}}</view>
+    </view>
+  </navigator>
+  </block>
+</view>
+<view wx:else class="clear-both">
+  <view class="not"></view>
+  <view style="color:#555555;text-align:center;margin-top:100rpx">
+  
+    <text>没有相关版块</text>
+  </view>
+</view>

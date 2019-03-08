@@ -1,0 +1,120 @@
+<view class="page-body">
+  <view  mode="widthFix" style="background-image: url({{board[0]['banner']}});background-color:#B0B0B0;">
+    <view  class="recommend" >
+      <image class="imgclass float-left" src="{{board[0]['logo']}}"></image>
+      <view class="float-left">  
+        <view class="s1 clear-both">{{board[0]['title']}}</view>
+        <view class="s2 clear-both">话题数:<text decode="{{true}}">{{board[0]['postcount']}} &nbsp;</text> 关注数:<text>{{board[0]['followcount']}}</text></view>
+      </view>
+      <view class="float-right">
+        <button wx:if="{{follow == ''}}" bindtap="changeFollow" data-bid="{{board[0]['id']}}" hoverClass='none' class="followbtn">+ 关注</button>
+        <button wx:if="{{follow != ''}}" bindtap="changeFollow" data-bid="{{board[0]['id']}}" hoverClass='none' style="background-color:#CCCCCC;" class="followbtn">已关注</button>
+      </view>
+    </view> 
+  </view>
+  <view class="clear-both topic">
+    <view class="float-left topics on">
+      <image src="/static/images/icon/home.png" class="listimg"></image>
+      <text>首页</text>  
+    </view>
+    <view class="float-left topics">
+      <navigator url="/application/pages/sns/topiclist/best?id={{board[0]['id']}}" hoverClass='none' open-type="redirect" type="redirect">
+        <image src="/static/images/best.png" class="listimg"></image>
+        <text>精华区</text>
+      </navigator>
+    </view>
+    <view class="float-left topics">
+      <navigator url="/application/pages/sns/topiclist/relevant?id={{board[0]['id']}}" hoverClass='none' open-type="redirect" type="redirect">
+        <image src="/static/images/bd.png" class="listimg"></image>
+        <text>相关版块</text>
+      </navigator>
+    </view>
+  </view>
+
+<!--置顶  -->
+  <block wx:for='{{boardtop}}' wx:for-item="boards" wx:for-index='bos' wx:key="board">
+    <view wx:if="{{boards.istop == 1}}"  class="clear-both">
+      <navigator url="/application/pages/sns/detail/index?id={{boards.id}}" open-type="redirect" type="redirect">
+        <view class="bests">
+          <text wx:if="{{boards.istop == 1}}"  class="boardbest">置顶</text>{{boards.title}}
+        </view>
+      </navigator>
+    </view>
+  </block> 
+  <block wx:for='{{post}}' wx:for-item="posts" wx:for-index='pos' wx:key="posted">
+    <view wx:if="{{posts.isboardtop == 1 && posts.istop == 0}}"  class="clear-both">
+        <navigator url="/application/pages/sns/detail/index?id={{posts.id}}" open-type="redirect" type="redirect">
+          <view class="bests">
+            <text wx:if="{{posts.isboardtop == 1 }}"  class="best">置顶</text>{{posts.title}}
+          </view>
+        </navigator>
+    </view>
+  </block> 
+
+  <block wx:for='{{post}}' wx:for-item="posts" wx:for-index='pos' wx:key="posted">
+    <view wx:if="{{posts}}" class="clear-both">
+      <view class="not"></view>
+      <view>
+        <navigator url="/application/pages/sns/detail/index?id={{posts.id}}" class="info" open-type="redirect" type="redirect">
+        <view class="clear-both">
+          <image class="image-user float-left" src="{{posts.avatar}}"></image>
+          <view class="float-left infos" style="padding-left:25rpx;">
+            <view class="user-info">{{posts.nickname}}</view>
+            <view class="user-info">{{posts.createtime}}</view> 
+          </view>
+        </view>
+        <view class="clear-both infos">
+          <view class="title"><text wx:if="{{posts.isboardbest == 1 || posts.isbest == 1}}"  class="isbest">精</text>{{posts.title}}</view>
+          <view wx:if="{{posts.images}}" class="cimages">
+            <block wx:for='{{posts.images}}' wx:for-item="post" wx:for-index='pos' wx:key="posted">
+              <image src="{{post}}" mode="widthFix" class="content-images"></image>
+            </block>
+          </view>
+          <!-- <view class="content"> -->
+            <!-- <import src="/utils/wxParse/wxParse.wxml" />
+            <view class="wxParse">
+              <block wx:for="{{postid}}" wx:for-item="iditem" wx:key="ikey" >
+              <block wx:if="{{iditem == posts.id}}" wx:for="{{content}}" wx:for-item="contents" wx:key="ckey">
+                <template  is="wxParse" data="{{wxParseData:contents}}"/>
+              </block>
+              </block>
+            </view> -->
+          <!-- </view> -->
+        </view>
+        </navigator>
+      </view>
+      <view class="topic-param"><text></text>
+        <navigator url="/application/pages/sns/detail/index?id={{posts.id}}" class="float-left param" open-type="redirect" type="redirect">
+          <image class="tbimg" src="/static/images/pl.png"></image>
+          <text>({{posts.postcount}})</text>
+        </navigator>
+        <view data-pid="{{posts.id}}" bindtap="changeLike" hoverClass='none' class="float-left param">
+          <image class="tbimg" src="/static/images/dz.png"></image>
+          <text>({{posts.followcount}})</text>
+        </view>
+        <navigator url="/application/pages/sns/detail/index?id={{posts.id}}" class="float-left param" open-type="redirect" type="redirect">
+          <text>投诉</text>
+        </navigator>
+      </view>
+    </view>
+  </block>
+
+    <view class="clear-both" wx:if="{{post == ''}}">
+      <view style="width:100%;height:300rpx;line-height:300rpx;text-align:center;color:#555555;">
+        <view>没有相应话题，请前往发布</view>
+      </view>
+    </view>
+
+    <view class="clear-both" style="width: 100%;height: 120rpx;"></view>
+    <view class="float-right publish-topic">
+    <navigator hoverClass='none' open-type="redirect" type="redirect" url="/application/pages/sns/topiclist/publish?bid={{board[0]['id']}}" >
+      <view class="board">
+        <image src="/static/images/icon-white/bj.png" style="width:70rpx;height:70rpx;"></image>
+      </view>
+    </navigator>
+    </view>
+  
+  <view>
+  <include src='/application/pages/sns/common/index.wxml'/>
+  </view>
+</view>

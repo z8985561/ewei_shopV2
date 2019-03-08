@@ -1,0 +1,9 @@
+<view class="fui-cell-group" wx:if="{{openbind}}">
+   <view class="fui-cell must">
+        <view class="fui-cell-label">手机号</view>
+        <view class="fui-cell-info">{{mobile?mobile:'未验证'}}</view>
+        <navigator class="fui-cell-remark" hoverClass="none" url="/pages/member/appointment/bind">{{mobile?'重新':'立即'}}验证</navigator>
+    </view>
+</view>
+<include src="/pages/common/diyform.wxml"></include>
+<view bindtap='submit' class='btn btn-success block'>确认提交</view>

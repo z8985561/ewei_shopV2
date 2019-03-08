@@ -1,0 +1,74 @@
+@import "../../../__wuBaseWxss__/0.wxss";
+
+.com-log .fui-cell-group .fui-cell .fui-cell-label {
+  width: auto;
+  font-size: 28rpx;
+}
+
+.com-log .fui-cell-group .fui-cell .fui-cell-info {
+  text-align: right;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.com-log .fui-list .fui-list-inner .row .row-text {
+  font-size: 28rpx;
+  color: #999;
+}
+.record-container-bottom{
+  width:94%;
+  height:1px;
+  background-color:#F5F5F5;
+  margin:0 auto;
+}
+.record-container {
+  font-size: 29rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.record-left-view{
+  margin:10rpx 0 0 12px;
+}
+
+.record-right {
+  width: 140rpx;
+  display:flex;
+  display: -webkit-flex;
+  align-items:center;
+}
+.record-left-view-mid{
+  color:#666;
+}
+.record-left-view-bottom{
+  color:#666;
+}
+.status0{
+  padding: 3px;
+  background-color: #d9d9d9;
+  color:#fff; 
+}
+.status1{
+  padding: 3px;
+  background-color: #ff9326;
+  color:#fff; 
+}
+.status2{
+  padding: 3px;
+  background-color: #ff9326;
+  color:#fff; 
+}
+.status3{
+  padding: 3px;
+  background-color: #04ab02;
+  color:#fff; 
+}
+.status-1{
+  padding: 3px;
+  background-color: #ff5555;
+  color:#fff;
+  
+}

@@ -1,0 +1,23 @@
+<view class='fui-list-group'>
+  <view class='fui-list'>
+    <view class='fui-list-media'>
+      <image src='{{info.avatar}}'></image>
+    </view>
+    <view class='fui-list-inner'>
+      <view class='row'>{{info.nickname || "未获取"}}
+      </view>
+      <view class='subtitle'>注册时间: {{info.createtime}}</view>
+    </view>
+  </view>
+  <block wx:for="{{diycommission}}">
+  <view class='fui-list'>
+  <view class='fui-list-media'>
+     <text>{{item.tp_name}}:</text>
+    </view>
+    <view class='fui-list-inner'>
+      <view class='row'>{{item[0]}}</view>
+    </view>
+  </view>
+  </block>
+  <view bindtap="submit" data-magentid="{{info.id}}" class="btn btn-danger mtop block">确认通过</view>
+</view>

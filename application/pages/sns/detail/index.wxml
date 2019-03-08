@@ -1,0 +1,137 @@
+<view class="page-body">
+    <navigator hover-class="none" class="user-group fui-list" url="/application/pages/sns/user/index?id={{posts['user']['id']}}" open-type="redirect" type="redirect">
+      <view class="fleft">
+          <image class="user-img" src="{{posts['post']['avatar']}}"></image>
+      </view>
+      <view class="fleft userinfo">
+          <view class="subtitle cboth">
+            <text class=" username">{{posts['post']['nickname']}}</text>
+            <text class=" board-level" style="background:{{posts['level']['bg']}};color:{{posts['level']['color']}}">{{posts['level']['levelname']}}</text>
+            <text wx:if="{{posts['manager']['bid'] == posts['board']['id']}}" class=" board">版主</text>
+          </view>
+          <view wx:if="{{user[0]['sign']}} != ''" class="cboth" style="margin-top:15rpx;margin-bottom:15rpx;">{{posts['user']['sign']}}</view>
+      </view>
+    </navigator>
+
+  <view class="fui-article fui-cell-group" style="margin-top:0rpx;">
+    <view class="topic-title">
+      <view wx:if="{{posts['post']['isbest'] == 1 || posts['post']['isboardbest'] == 1}}" class="best fleft">精</view>
+      <text class="title-size fleft">{{posts['post']['title']}}</text>
+    </view>
+    <view class="attribute cboth">
+      <view class="fleft time-style">{{posts['time']}}</view>
+      <navigator wx:if="{{posts['board']}}" url="/application/pages/sns/topiclist/index?id={{posts['board']['id']}}" class="fleft tboard" open-type="redirect" type="redirect">{{posts['board']['title']}}</navigator>
+    </view>
+
+    <view class="cimages">
+     <block wx:for='{{posts["images"]}}' wx:for-item="pimage" wx:for-index='imgpos' wx:key="imgposted"> 
+      <image src="{{pimage}}" mode="widthFix" class="content-images"></image>
+     </block> 
+    </view>
+
+    <view class="pull-content">
+      <view class="content-text">
+        <import src="/utils/wxParse/wxParse.wxml" />
+          <view class='wxParse'>
+            <template is='wxParse' data='{{wxParseData:content.nodes }}' />
+          </view>
+      </view>
+    </view>
+    <view wx:if="{{posts['manager']['bid'] == posts['board']['id'] || isadmin}}" class="powerlist">
+       <view data-postid="{{posts['post']['id']}}" bindtap="btnDelete" hoverClass='none' class="fleft look">删除</view>
+      <!-- <view id="btnCheck" class="fleft look">审核通过</view> -->
+      <view data-postid="{{posts['post']['id']}}" data-status="{{posts['post']['isboardbest']}}" bindtap="btnBest" hoverClass='none' class="fleft look">
+        <view wx:if="{{posts['post']['isboardbest'] == 0}}" class="bestview">设置精华</view>
+        <view wx:if="{{posts['post']['isboardbest'] == 1}}" class="bestview">取消精华</view>
+      </view>
+      <view data-postid="{{posts['post']['id']}}" bindtap="btnTop" hoverClass='none' class="fleft look">
+        <view wx:if="{{posts['post']['isboardtop'] == 0}}" class="topview">设置置顶</view>
+        <view wx:if="{{posts['post']['isboardtop'] == 1}}" class="topview">取消置顶</view>
+      </view> 
+      <view class="fright look">
+        <image class="tbimg" src="/static/images/look.png"></image>
+        <text class="icon icon-browse">{{posts['post']['views']}}</text>
+      </view>
+    </view>
+    <view wx:if="{{isadmin}}" class="powerlist">
+      <view data-postid="{{posts['post']['id']}}" bindtap="btnallBest" hoverClass='none' class="fleft look">
+        <view wx:if="{{posts['post']['isbest'] == 0}}" class="topview">设置全版精华</view>
+        <view wx:if="{{posts['post']['isbest'] == 1}}" class="topview">取消全版精华</view>
+      </view>
+      <view data-postid="{{posts['post']['id']}}" bindtap="btnallTop" hoverClass='none' class="fleft look">
+        <view wx:if="{{posts['post']['istop'] == 0}}" class="topview">设置全版置顶</view>
+        <view wx:if="{{posts['post']['istop'] == 1}}" class="topview">取消全版置顶</view>
+      </view>
+    </view>
+  </view>
+  <view class="claer-both fui-cell-group">
+    <view class="">
+      <view class="allcommen">
+        <text>全部评论</text>
+      </view>
+      <view wx:if="{{comment == ''}}" class="margin-bottom:30rpx;" >
+        <view style="width:100%;text-align:center;">
+          <image src="/static/images/nots.png" style="width:33%;height:238rpx;"></image>
+        </view>
+        <view style="width:100%;text-align:center;margin-bottom:20rpx;font-size:35rpx;color:#555555;">
+          <text>暂时没有任何评论...</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="comment" style="width:100%;">
+  <block wx:for='{{comment}}' wx:for-item="comitem" wx:for-index='com' wx:key="coms">
+    <view class="fleft">
+      <image class="user-img" src="{{comitem.avatar}}"></image>
+    </view>
+    <view class="fleft commentinfo">
+      <view class="cboth" style="height:40rpx">
+        <text class=" username">{{comitem.nickname}}</text>
+        <text class=" board-level" style="background:{{comitem.bg}};color:{{comitem.color}};">{{comitem.levelname}}</text>
+        <text wx:if="{{posts['post']['openid'] == comitem.openid}}"  class="floor">楼主</text>
+        <text wx:if="{{comitem.ismanager == posts['board']['id']}}" class="board">版主</text>
+      </view>
+      <view class="cboth content">
+        {{comitem.content}}
+      </view>
+      <view wx:if="{{comitem.repname && comitem.repcontent}}" class="cboth time-comment" style="padding-bottom:10rpx;">
+        <text style="color:#CD5B45;font-size:29rpx;">@{{comitem.repname}}</text>
+        <text style="font-size:31rpx;color:#7A7A7A;">：{{comitem.repcontent}}</text>
+      </view>
+      <view class="cboth" style="margin-top:18rpx;" wx:if="{{comitem.images}}">
+      <block wx:for="{{comitem.images}}" wx:for-item="images" wx:for-index='ima' wx:key="cimages">
+      <image class="cboth" style="width:48%;margin-left:5rpx;" mode="widthFix" src="{{images}}"></image>
+      </block>
+      </view>
+      <view class="cboth time-comment">
+        <text class="time-style">{{comitem.createtime}}</text>
+        
+      </view>
+      <view class="cboth opselect">
+        
+        <navigator url="/application/pages/sns/detail/comment?id={{posts['post']['id']}}&nickname={{comitem.nickname}}&bid={{comitem.bid}}&rpid={{comitem.id}}" class="fleft options" open-type="redirect" type="redirect"><image class="content-img" src="/static/images/pl.png"></image> <text>回复</text></navigator>
+
+        <view data-pid="{{comitem.id}}" data-postid="{{posts['post']['id']}}" bindtap="changeLive" hoverClass='none' class="fleft options"><image class="content-img" src="/static/images/dz.png"></image> <text wx:if="{{comitem.like}}">({{comitem.like}})</text><text wx:else>赞</text></view>
+        <navigator url="/application/pages/sns/detail/complain?id={{posts['post']['id']}}&nickname={{comitem.nickname}}&pid={{comitem.id}}" hoverClass='none' class="fleft options" open-type="redirect" type="redirect"><image class="content-img" src="/static/images/ts.png"></image>投诉</navigator>
+        <view wx:if="{{posts['manager']['bid'] == posts['board']['id'] || isadmin}}" class="fleft options" data-postid="{{comitem.id}}" bindtap="delcomment" hoverClass='none'><image class="content-img" src="/static/images/dels.png"></image>删除</view>
+      </view>
+    </view>
+  </block>
+  </view>
+
+<view style="width:100%;height:120rpx;clear: both;"></view>
+<view class="content-footers">
+  <navigator url="/application/pages/sns/detail/comment?id={{posts['post']['id']}}&title={{posts['post']['nickname']}}&bid={{posts['board']['id']}}" hoverClass='none'  class="fleft footer-select" open-type="redirect" type="redirect">
+     <view class="vimgs"><image src="/static/images/pl.png" class="selectimgs"></image></view> 
+    <view class="footer-fonts"><text >评论({{replycount}})</text></view>
+  </navigator>
+  <view  data-pid="{{posts['post']['id']}}" data-postid="{{posts['post']['id']}}" bindtap="changeLive" hoverClass='none'  class="fleft footer-select">
+     <view class="vimgs"><image src="/static/images/dz.png" class="selectimgs"></image></view> 
+    <view class="footer-fonts"><text >点赞({{like}})</text></view>
+  </view>
+  <navigator url="/application/pages/sns/detail/complain?id={{posts['post']['id']}}&nickname={{posts['post']['nickname']}}&pid=0" hoverClass='none'   class="fleft footer-select" open-type="redirect" type="redirect">
+     <view class="vimgs"><image src="/static/images/ts.png" class="selectimgs"></image></view> 
+    <view class="footer-fonts"><text >投诉</text></view>
+  </navigator>
+</view>
+</view>

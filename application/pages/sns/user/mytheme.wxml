@@ -1,0 +1,28 @@
+<block wx:for='{{post}}' wx:for-item="posts" wx:for-index='postitem' wx:key="list">
+  <view class="clear-both">
+    <view class="not"></view>
+    <navigator url="/application/pages/sns/detail/index?id={{posts.id}}">
+      <view class="info">
+        <image class="image-user float-left" src="{{posts.avatar}}"></image>
+        <view class="float-left infos">
+          <view class="user-info">{{posts.nickname}}</view>
+          <view class="user-info">{{posts.createtime}}</view> 
+        </view>
+      </view>
+      <view class="clear-both info">
+        <view class="title">{{posts.title}}</view>
+        <view class="content">{{posts.content}}</view>
+      </view>
+    
+    <view class="clear-both" style="width:93%;margin-left:20rpx">
+      <block wx:for='{{posts.images}}' wx:for-item="images" wx:key="imglist">
+        <image src="{{images}}" style="width:100%" mode="widthFix"></image>
+      </block>
+    </view>
+    </navigator>
+    <view class="topic-param"><text></text>
+      <view class="float-left param"><text>评论({{posts.postcount}})</text></view>
+      <view class="float-left param"><text>点赞({{posts.followcount}})</text></view>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,19 @@
+<form bindsubmit="formSubmit">
+  <input type="text" hidden="{{true}}" name="bid" value="{{bid}}"></input>
+  <input class="inputs" name="title" placeholder="主题 3~25个字"></input>
+  <textarea name="contents" placeholder="内容 10-1000个字" class="post-input" rows="8" minlength="10" maxlength="1000"></textarea>
+  <view>
+  </view>
+  <view style="padding:10rpx 50rpx 10rpx 50rpx;">
+    <view class='fui-cell'>
+      <view class='fui-images fui-images-sm'>
+        <block wx:for='{{imgs}}' wx:for-item='item' wx:for-index='index' wx:key="*this">
+          <image data-index='{{index}}' src='{{item}}' class='image image-sm' data-type='image-preview' catchtap='upload'>
+          <text data-index='{{index}}' class='image-remove' data-type='image-remove' catchtap='upload'>×</text></image>
+        </block>
+      </view>
+      <view class='fui-uploader fui-uploader-sm' data-type='image' catchtap='upload'></view>
+    </view>
+  </view>
+  <button formType="submit" class="publishbtn">发表</button>
+</form>

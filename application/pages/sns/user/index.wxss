@@ -1,0 +1,29 @@
+.fleft{float: left;}
+.cboth{clear: both;}
+.widthcontrol {width: 100%;}
+.tcolor{color:#555555;}
+.bgcolor{background:#fafafa;}
+.num-text{color:red;font-size:31rpx;}
+.user-img{width: 140rpx;height: 140rpx;border-radius: 50%;align: center;margin-top:-70rpx;border:2rpx white solid;}
+.board-img {width: 120rpx;height: 120rpx;border-radius: 50%;align: center;}
+.plateclass {width: 25%;margin-bottom: 25rpx;margin-top: 25rpx;float: left;display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;}
+.platename {margin-top: 10rpx;margin-bottom:5rpx;width: 100%;text-align: center;font-size: 31rpx;}
+.user-info{padding-bottom: 30rpx;text-align: center;}
+.user-history{padding-top: 30rpx;}
+.nickname{margin-top: 10rpx;}
+.label-level{font-size: 33rpx;}
+.post{margin-top: 20rpx;font-size: 35rpx;color: #00BFFF;}
+.sign-content{margin-top: 20rpx;margin-bottom: 20rpx;font-size: 35rpx;}
+.recommend {width: 100%; height: 150rpx;border-bottom: 1rpx solid #EBEBEB;clear: both;}
+.topic-img{margin:14rpx;}
+.swidth{width:95%;}
+.s1 {margin-top: 30rpx;margin-left: 30rpx;font-size: 34rpx;}
+.fhidden{overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
+.s2 {margin-top: 10rpx;margin-left: 30rpx;font-size: 30rpx;}
+.look-more{font-size: 35rpx;color: #00BFFF;height:80rpx;line-height:80rpx;}
+.float-left {float: left;}
+.footer{width: 100%;height: 110rpx;position: fixed;bottom: 0;text-align: center;background: #fff;border-top:1rpx solid #EBEBEB;}
+.vimg{height:55rpx;margin-top:10rpx;}
+.selectimg{width:50rpx;height:50rpx;}
+.fonts{font-size: 25rpx;}
+.footer-select{width: 33%;}

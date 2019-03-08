@@ -1,0 +1,215 @@
+.diy-search {
+    background: #f1f1f2;
+    padding: 10px 10px;
+}
+
+.diy-search .inner {
+    height: 30px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.diy-search.radius .inner {
+    border-radius: 5px;
+}
+
+.diy-search.round .inner {
+    border-radius: 30px;
+}
+
+.diy-search .inner .search-icon {
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+    color: #b4b4b4;
+}
+
+.diy-search .inner .search-input {
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    font: 12px;
+    color: #999999;
+}
+
+.diy-search .inner .search-input span {
+    padding: 0 10px 0;
+}
+
+.diy-search .inner.left .search-icon {
+    float: left;
+}
+
+.diy-search .inner.right .search-icon {
+    float: right;
+}
+.diy-fixedsearch {
+    height: 44px;
+    overflow: hidden;
+    position: fixed;
+    width:100%;
+    top:0px;
+    z-index:99
+}
+
+.diy-fixedsearch .fixed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.diy-fixedsearch .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000000;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.diy-fixedsearch .inner {
+    position: relative;
+    z-index: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    color: #fff;
+    height: 28px;
+    padding: 8px;
+}
+
+.diy-fixedsearch .inner .leftnav {
+    height: 28px;
+    line-height: 28px;
+}
+
+.diy-fixedsearch .inner .rightnav {
+    height: 28px;
+    line-height: 28px;
+}
+
+.diy-fixedsearch .inner .leftnav image,
+.diy-fixedsearch .inner .rightnav image {
+    height: 28px;
+    width: 28px;
+    display: block;
+}
+
+.diy-fixedsearch .inner .leftnav .icon,
+.diy-fixedsearch .inner .rightnav .icon {
+    font-size: 24px;
+}
+
+.diy-fixedsearch .inner .center {
+    height: 28px;
+    width: 100%;
+    padding: 0 8px;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.diy-fixedsearch .inner .center text {
+    border-radius: 0;
+    background: #fff;
+    -webkit-appearance : none;
+    height: 28px;
+    border: 0;
+    width: 100%;
+    font-size: 14px;
+    color: #666;
+    float: left;
+    line-height: 28px;
+    padding-top: 1px;
+}
+
+.diy-fixedsearch .inner .center.round text {
+    border-radius: 28px;
+}
+
+.diy-fixedsearch .inner .center.circle text {
+    border-radius: 4px;
+}
+/* 我的小店 */
+.page-commission-myshop .myshop-header {height: auto; background: #fff; overflow: hidden;}
+.page-commission-myshop .myshop-header .image {height: 8rem;}
+.page-commission-myshop .myshop-header .image image {min-height: 5rem; width: 100%; display: block;}
+.page-commission-myshop .myshop-header .menus {height: 2.5rem; background: #fff; padding: 0.3rem 0 0.3rem 5rem; position: relative; display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;}
+.page-commission-myshop .myshop-header .menus .shopname {height: 2rem; position: absolute; top: -1.5rem; left: 4.8rem; color:#fff}
+.page-commission-myshop .myshop-header .menus .shoplogo {height: 3.5rem; width: 3.5rem; background: #fff; position: absolute; top: -1.5rem; left: 0.8rem; border: 1px solid #eee;border-radius: .2rem}
+.page-commission-myshop .myshop-header .menus .shoplogo image {height: 100%; width: 100%; display: block;border-radius: .2rem}
+.page-commission-myshop .myshop-header .menus .nav {width: 100%; text-align: center; position: relative; line-height: 0.9rem; font-size: 0.7rem; color: #1e313c;}
+.page-commission-myshop .myshop-header .menus .nav:before {content: " "; position: absolute; top: 0; left: 0; width: 0; height: 100%; border-left: 1px solid #f2f2f2;}
+.page-commission-myshop .myshop-header .menus .nav .ptext {padding: 0; margin: 0; line-height: inherit;}
+.page-commission-myshop .myshop-header .menus .nav .itext {font-size: .75rem;}
+
+.page-commission-myshop .fui-searchbar:after { display:none;}
+
+.fui-modal,
+.verify-pop {
+    position: fixed;
+}
+
+.verify-pop .qrcode {
+    width: 250px;
+    margin-left: -125px;
+    border-radius: 0.5rem;
+    height: auto;
+    overflow: hidden;
+}
+
+.verify-pop.pop .qrcode {
+    width: 70%;
+    height: 15rem;
+    margin-left: -35%;
+    overflow: hidden;
+    display: block;
+}
+
+.verify-pop.pop .qrcode .inner {
+    padding: 0.5rem;
+    height: 12rem;
+}
+
+.verify-pop.pop .qrcode .inner .title {
+    text-align: center;
+    font-size: 1rem;
+    height: 1.5rem;
+}
+
+.verify-pop.pop .qrcode .inner .text {
+    width: 100%;
+    word-wrap: break-word;
+    font-size: 0.7rem;
+    color: #ef4f4f;
+    line-height: 1rem;
+    height: 10rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.fui-cell-info .title{
+    font-size: .7rem;
+    line-height: 1.5;
+}
+.fui-cell-info .subtitle{
+    font-size: .6rem;
+    line-height: 1.5;
+    color: #999;
+}
+.fui-list.goods-selected{
+    background: #f9f9f9;
+}

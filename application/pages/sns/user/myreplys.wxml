@@ -1,0 +1,21 @@
+<block wx:for='{{replys}}' wx:for-item="reply" wx:for-index='replyitem' wx:key="lists">
+<view class="clear-both">
+  <view style="width:100%;height:10rpx;background-color:#fff;"></view>
+  <view>
+    <view class="contents">回复{{reply.parentnickname}}：{{reply.content}}</view>
+    <view class="del" data-delid="{{reply.id}}" bindtap="deleteComment" hoverClass='none'>删除评论</view>
+  </view>
+  <view style="width:100%;background-color:#fff;" data-pid="{{reply.bid}}" bindtap="goBoard" hoverClass='none'>
+    <view >
+      <view class=" float-left" style="width:150rpx;">
+        <image class="image-user" src="{{reply.logo}}"></image>
+      </view>
+      <view class="float-left infos">
+        <view class="user-info clear-both">{{reply.parenttitle}}</view>
+        <view class="user-info clear-both">{{reply.title}}</view> 
+      </view>
+    </view>
+  </view>
+</view>
+</block>
+

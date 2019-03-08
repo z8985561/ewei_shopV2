@@ -1,0 +1,130 @@
+<view class="page fui-page seckill-page">
+  <view class="fui-content navbar">
+     <scroll-view>
+    <view class="swiper-container time-container">
+      <view class="swiper-wrapper">
+        <block wx:for='{{times}}' wx:for-item='item' wx:for-index='index' wx:key="key">
+       
+          <view class="swiper-slide {{index}} time-slide {{index==timeindex?'current':''}}" scroll-x="true" data-index="{{index}}" bindtap="topBarItemClick" data-timeid="{{item.id}}" data-taskid="{{taskid}}" data-roomid="{{roomid}}">
+            <view class="time">{{item.time}}:00</view>
+            <view class="text">
+              <block wx:if="{{item.status==0}}">
+              抢购中
+              </block>
+              <block wx:if="{{item.status==1}}">
+              即将开始
+              </block>
+              <block wx:if="{{item.status!=0&&item.status!=1}}">
+              已开抢
+              </block>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+     </scroll-view>
+    <block wx:if="{{rooms.length>1}}">
+      <view class="swiper-container room-container">
+          <view class="swiper-wrapper">
+              <block wx:for="{{rooms}}" wx:for-item='item' wx:for-index='index' wx:key="list">
+              <navigator class="external swiper-slide room-slide {{item.id==roomid?'selected':''}}" url="/application/pages/seckill/index/index?roomid={{item.id}}&taskid={{taskid}}&timeid={{timeid}}">
+                  {{item.title}}
+              </navigator>
+              </block>
+          </view>
+      </view>
+    </block>
+
+    <view class="swiper-container goods-container">
+        <view class="swiper-wrapper">
+            <!-- <block wx:for="{{list.time}}" wx:for-item='time' wx:for-index='index'> -->
+            <view class="fui-list-group time-group-{{time.id}}" style="margin-top:0px">
+  <view class="fui-list-group-title" style="display:block;">
+      <block wx:if="{{time.status>=0}}">
+        <view class="timer" >
+            <block wx:if="{{time.status==1}}">
+            距开始
+            </block>
+            <block wx:if="{{time.status!=1}}">
+            距结束
+            </block>
+            <view class="time-hour span">{{hour}}</view>:<view class="time-min span">{{min}}</view>:<view class="time-sec span">{{sec}}</view>
+        </view>
+      </block>
+       <view>
+      <block wx:if="{{time.status==-1}}">还可以继续抢购哦~</block>
+      <block wx:if="{{time.status==0}}">抢购中 先下单先得哦</block>
+      <block wx:if="{{time.status==1}}">即将开始 先下单先得哦</block>
+      </view>
+  </view>
+  <view class="swiper-slide goods-slide" data-timeid="{{time.id}}"
+                  data-starttime="{{time.starttime-now}}"
+                  data-endtime="{{time.endtime-now}}"
+                  data-status="{{time.status}}" style='width:95%;'>
+                  <block wx:for="{{list.goods}}" wx:for-item='good' wx:for-index='index' wx:key="list">
+                    <view class='fui-list align-start'>
+                        <view class='fui-list-media'>
+                            <navigator url="/pages/goods/detail/index?id={{good.goodsid}}">
+                              <image src="{{good.thumb}}"></image>
+                            </navigator>
+                        </view>
+                        <view class='fui-list-inner'>
+                            <navigator class='text' url="/pages/goods/detail/index?id={{good.goodsid}}">{{good.title}}</navigator>
+                            <view class="info">
+                                  <view class="button">
+                                      <block wx:if="{{time.status==1}}">
+                                      <navigator url="/pages/goods/detail/index?id={{good.goodsid}}" class="btn btn-success btn-sm">等待抢购</navigator>
+                                      </block>
+                                      <block wx:if="{{time.status!=1}}">
+                                          <block wx:if="{{good.percent>=100}}">
+                                            <navigator url="/pages/goods/detail/index?id={{good.goodsid}}" class="btn btn-default btn-sm">已抢空</navigator>
+                                          </block>
+                                          <block wx:if="{{good.percent<100}}">
+                                      <navigator url="/pages/goods/detail/index?id={{good.goodsid}}" class="btn btn-danger btn-sm">去抢购</navigator>
+
+                                          </block>
+                                      </block>
+                                  </view>
+                                <view class="price">￥{{good.price}}</view>
+                            </view>
+                            <view class="info info1">
+                                <block wx:if="time.status!=1}}">
+                                    <view class="process">
+                                            <view class="inner" style="width:{{good.percent}}%"></view>
+                                    </view>
+                                <view class="process-text">已售 {{good.percent}}%</view>
+                                </block>
+                                <view class="price1">￥{{good.marketprice}}</view>
+                            </view>
+                        </view>
+                    </view>
+                  </block>
+            </view>
+
+</view>
+            
+            <!-- </block> -->
+        </view>
+    </view>
+  </view>
+</view>
+
+<!-- <view class="fui-list-group time-group-<%time.id%>" style="margin-top:0px">
+  <view class="fui-list-group-title">
+      <block wx:if="{{time.status>=0}}">
+        <view class="timer">
+            <block wx:if="{{time.status==1}}">
+            距开始
+            </block>
+            <block wx:if="{{time.status!=1}}">
+            距结束
+            </block>
+            <view class="time-hour">-</view>:<view class="time-min">-</view>:<view class="time-sec">-</view>
+        </view>
+      </block>
+      <block wx:if="{{time.status==-1}}">还可以继续抢购哦~</block>
+      <block wx:if="{{time.status==0}}">抢购中 先下单先得哦</block>
+      <block wx:if="{{time.status==1}}">即将开始 先下单先得哦</block>
+  </view>
+</view> -->
+

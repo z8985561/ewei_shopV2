@@ -1,0 +1,107 @@
+<block wx:if='{{!show}}'>
+  <loading>加载中...</loading>
+</block>
+<block wx:if='{{show}}'>
+  <view class='page commission'>
+    <view class='user-info'>
+      <view class='fui-list'>
+        <view class='fui-list-media'>
+          <image src='{{member.avatar}}'></image>
+        </view>
+        <view class='fui-list-inner'>
+          <view class='title'>{{member.nickname}}</view>
+          <view class='subtitle'>{{levelname}}</view>
+          <view class='text'>{{set.texts.up}}：{{agentname}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='userblock'>
+      <view class='line total' wx:if="{{set.commissionsettletype==0}}">
+        <view>{{set.texts.commission_pay}}({{set.texts.yuan}})</view>
+        <view class='num'>{{member.commission_pay}}</view>
+      </view>
+      <view class='line able'>
+        <navigator class='btn pull-right disabled' hoverClass='none' url="{{set.commissionsettletype==0? '/pages/commission/withdraw/index': '/pages/commission/apply/seconds'}}">
+        {{set.texts.commission}}{{set.texts.withdraw}}</navigator>
+        <view class='text'>
+          <view>{{set.texts.commission_ok}}({{set.texts.yuan}})</view>
+          <view class='num'>{{member.commission_ok}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='fui-block-group'>
+      <navigator url="{{set.commissionsettletype==0? '/pages/commission/withdraw/index': '/pages/commission/apply/seconds'}}" class='fui-block-child'>
+        <view class='icon'>
+          <image src='/static/images/icon-red/money.png'></image>
+        </view>
+        <view class='title'>{{set.texts.commission1}}</view>
+        <view class='text'><text>{{member.commission_total}}</text>{{set.texts.yuan}}</view>
+      </navigator>
+      <navigator class='fui-block-child' url='/pages/commission/order/index'>
+        <view class='icon'>
+          <image src='/static/images/icon-red/list.png'></image>
+        </view>
+        <view class='title'>{{set.texts.order}}</view>
+        <view class='text'><text>{{member.ordercount0}}</text>笔</view>
+      </navigator>
+      <navigator class='fui-block-child' url='/pages/commission/log/index'>
+        <view class='icon'>
+          <image src='/static/images/icon-red/manage-order.png'></image>
+        </view>
+        <view class='title'>{{set.texts.commission_detail}}</view>
+        <view class='text'><text>{{member.applycount}}</text>笔</view>
+      </navigator>
+      <navigator class='fui-block-child' url='/pages/commission/down/index'>
+        <view class='icon'>
+          <image src='/static/images/icon-red/group.png'></image>
+        </view>
+        <view class='title'>{{set.texts.mydown}}</view>
+        <view class='text'><text>{{member.downcount}}</text>人</view>
+      </navigator>
+      <block wx:if='{{set.closed_qrcode == 0}}'>
+        <navigator class='fui-block-child' url='/pages/commission/poster/index'>
+          <view class='icon'>
+            <image src='/static/images/icon-red/code.png'></image>
+          </view>
+          <view class='title'>分享海报</view>
+          <view class='text'></view>
+        </navigator>
+      </block>
+      
+      <!-- 小店 -->
+       <block wx:if='{{set.closemyshop == 0}}'>
+        <navigator class='fui-block-child' url='/pages/commission/myshop/index'>
+          <view class='icon'>
+            <image src='/static/images/icon-red/home.png'></image>
+          </view>
+          <view class='title'>我的小店</view>
+          <view class='text'></view>
+        </navigator>
+        <!-- <navigator class='fui-block-child' url='/pages/commission/myshop/set'>
+          <view class='icon'>
+            <image src='/static/images/icon-red/home.png'></image>
+          </view>
+          <view class='title'>小店设置</view>
+          <view class='text'></view>
+        </navigator>
+        <navigator class='fui-block-child' url='/pages/commission/myshop/select'>
+          <view class='icon'>
+            <image src='/static/images/icon-red/home.png'></image>
+          </view>
+          <view class='title'>自选商品</view>
+          <view class='text'></view>
+        </navigator> -->
+      </block>
+       <block wx:if='{{set.checkpower == 1}}'>
+        <navigator class='fui-block-child' url='/pages/commission/power/index'>
+          <view class='icon'>
+            <image src='/static/images/icon-red/code.png'></image>
+          </view>
+          <view class='title'>申请审核</view>
+          <view class='text'></view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+</block>
+<!--作者QQ:1026770372-->

@@ -1,0 +1,81 @@
+<block wx:if='{{!show}}'>
+  <loading>加载中...</loading>
+</block>
+<block wx:if='{{show}}'>
+  <view class='page apply'>
+    <view class='fui-cell-group'>
+      <view class='fui-cell'>
+        <view class='fui-cell-info'>我的{{set.texts.commission_ok}}</view>
+         <view style='color:red'>￥{{commission_ok+commissiona_ok}}</view>
+      </view>
+      <view class='fui-cell'>
+        <view class='fui-cell-info'>本次提现{{set.texts.commission}}</view>
+         <view><input bindinput='inputcommission' class='fui-input' data-type='input' max='25' placeholder='请输入金额' type='text' value="{{input}}"></input></view>
+      </view>
+      <view class='fui-cell'>
+        <view class='fui-cell-label'>提现方式</view>
+        <view class='fui-cell-info'>
+          <picker bindchange='typeChange' range='{{type_array}}' rangeKey='title' value='{{applyIndex}}'>{{type_array[applyIndex].title}}</picker>
+        </view>
+        <view class='fui-cell-remark'></view>
+      </view>
+      <block wx:if='{{applytype == 3}}'>
+        <view class='fui-cell'>
+          <view class='fui-cell-label'><span class='re-g'>选择银行</span></view>
+          <picker class='fui-cell-info' bindchange='bankChange' range='{{banklist}}' rangeKey='bankname' value='{{bankIndex}}'>{{banklist[bankIndex].bankname}}</picker>
+          <view class='fui-cell-remark'></view>
+        </view>
+      </block>
+      <block wx:if='{{applytype == 2 || applytype == 3}}'>
+        <view class='fui-cell'>
+          <view class='fui-cell-label'>姓名</view>
+          <view class='fui-cell-info'><input bindinput='inputChange' class='fui-input' data-type='realname' max='25' placeholder='请输入姓名' type='text' value="{{last_data.realname}}"></input>
+          </view>
+        </view>
+      </block>
+      <block wx:if='{{applytype == 2}}'>
+        <view class='fui-cell'>
+          <view class='fui-cell-label'>支付宝帐号</view>
+          <view class='fui-cell-info'><input bindinput='inputChange' class='fui-input' max='25' data-type='alipay' placeholder='请输入支付宝账号' value='{{last_data.alipay}}'></input>
+          </view>
+        </view>
+        <view class='fui-cell alipay-group'>
+          <view class='fui-cell-label'>确认帐号</view>
+          <view class='fui-cell-info'><input bindinput='inputChange' class='fui-input' max='25' data-type='alipay1' placeholder='请确认支付宝账号' value='{{last_data.alipay1}}'></input>
+          </view>
+        </view>
+      </block>
+      <block wx:if='{{applytype == 3}}'>
+        <view class='fui-cell alipay-group'>
+          <view class='fui-cell-label'>银行卡号</view>
+          <view class='fui-cell-info'><input bindinput='inputChange' class='fui-input' max='25' data-type='bankcard' placeholder='请输入银行卡号' value='{{last_data.bankcard}}'></input>
+          </view>
+        </view>
+        <view class='fui-cell alipay-group'>
+          <view class='fui-cell-label'>确认卡号</view>
+          <view class='fui-cell-info'><input bindinput='inputChange' class='fui-input' max='25' data-type='bankcard1' placeholder='请确认银行卡号' value='{{last_data.bankcard1}}'></input>
+          </view>
+        </view>
+      </block>
+    </view>
+    <block wx:if='{{set_array.charge > 0}}'>
+      <view class='fui-cell-group'>
+        <view class='fui-cell'>
+          <view class='fui-cell-info'>佣金提现{{set.texts.commission_charge}} {{set_array.charge}}%</view>
+        </view>
+        <block>
+          <view class='fui-cell'>
+            <view class='fui-cell-info'>本次提现将{{set.texts.commission_charge}}金额 ￥ {{deductionmoney?deductionmoney:0}}</view>
+          </view>
+        </block>
+        <view class='fui-cell'>
+          <view class='fui-cell-info'>本次提现实际到账金额 ￥ {{realmoney?realmoney:0}}</view>
+        </view>
+      </view>
+    </block>
+    <view bindtap='submit' class='btn btn-success block {{!cansettle|| isSubmit?"disabled":""}}'>下一步</view>
+    <view class='fui-toast {{FoxUIToast.show?"in":"out"}}'>
+      <view class='text'>{{FoxUIToast.text}}</view>
+    </view>
+  </view>
+</block>  

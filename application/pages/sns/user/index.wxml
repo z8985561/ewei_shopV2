@@ -1,0 +1,101 @@
+<view style="margin-bottom:110rpx;">
+  <view class="user-bg">
+    <image src="/static/images/userbg.png" mode="widthFix" style="width:100%;"></image>
+  </view>
+  <view class="user-info tcolor bgcolor">
+    <image src="{{userinfo[0]['avatar']}}" class="user-img"></image>
+    <view class="nickname">{{userinfo[0]['nickname']}}</view>
+    <view class="label">
+      <view class="label-level"><text style="color:{{level['color']}}">{{level['levelname']}}</text></view>
+    </view>
+    <view class="post">
+      <view>话题数:<text class="num-text" decode="{{true}}">{{count['postcount']}}&nbsp;&nbsp;</text>关注数:<text class="num-text">{{count['fllowcount']}}</text></view>
+      <view>积分:<text class="num-text">{{member[0]['credit']}}</text></view> 
+    </view>
+    <view wx:if="{{count['openid'] == count['uopenid']}}" class="sign">
+      <view wx:if="{{member[0]['sign'] == ''}}" data-value="" bindtap="changeSign" class="sign-content">这个家伙什么也没留下~~</view>
+      <view  wx:else bindtap="changeSign" data-value="{{member[0]['sign']}}" class="sign-content">{{member[0]['sign']}}</view>
+    </view>
+    <view wx:else class="sign">
+      <view wx:if="{{member[0]['sign'] == ''}}"  class="sign-content">这个家伙什么也没留下~~</view>
+      <view  wx:else class="sign-content">{{member[0]['sign']}}</view>
+    </view>
+    <modal hidden="{{ihidden}}" data-sign="{{vsign}}" title="请输入签名" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+      <input type='text' bindinput="getSign" placeholder="{{placeinput}}" auto-focus/>  
+    </modal>
+  </view>
+  <view wx:if="{{boards != ''}}" class="tcolor">
+    <view class="bgcolor user-history" style="text-align: center;" >
+        <view style="font-size:35rpx;padding-bottom: 30rpx;">
+          <text wx:if="{{count['openid'] == count['uopenid']}}">我的版块</text>
+          <text wx:else>TA的版块</text>
+        </view>
+    </view>
+    <view class="widthcontrol">
+    <block wx:for='{{boards}}' wx:for-item="board" wx:for-index='boarditem' wx:key="lists">
+    <navigator url="/application/pages/sns/topiclist/index?id={{board.id}}"  open-type="navigate">
+      <view class="plateclass">
+        <image class="board-img" src="{{board.logo}}" ></image>
+        <text class="platename">{{board.title}}</text>
+      </view>
+    </navigator>
+    </block>
+    </view> 
+  </view>
+  <view wx:if="{{posts != ''}}" class="tcolor cboth">
+    <view class="bgcolor user-history" style="text-align: center;" >
+        <view style="font-size:35rpx;padding-bottom: 30rpx;">
+          <text wx:if="{{count['openid'] == count['uopenid']}}">我的话题</text>
+          <text wx:else>TA的话题</text>
+        </view>
+    </view>
+    <view class="widthcontrol">
+
+      <block wx:for='{{posts}}' wx:for-item="post" wx:for-index='postitem' wx:key="list">
+      <navigator url="/application/pages/sns/detail/index?id={{post.id}}" open-type="navigate">
+        <view class="recommend cboth">
+          <view class="fleft">
+            <image class="board-img topic-img" src="{{post.thumb}}"></image>
+          </view>
+          <view class="fleft">
+            <view class="s1 cboth">{{post.title}}</view>
+            <view  class="s2 cboth">{{post.boardtitle}} | 阅读数:{{post.views}}</view>
+          </view>
+        </view>
+      </navigator>
+      </block>
+      
+      <view wx:if="{{count['postcount'] > '5'}}" class="look-more cboth widthcontrol bgcolor" style=" text-align:center;">
+      <navigator url="/application/pages/sns/user/mytheme" open-type="navigate"><text>查看更多</text></navigator>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{replys != '' }}" class="tcolor cboth">
+    <view class="bgcolor user-history" style="text-align: center;" >
+        <view style="font-size:35rpx;padding-bottom: 30rpx;">
+          <text>我的回复（仅自己可见）</text>
+        </view>
+    </view>
+    <view class="widthcontrol" style="margin-bottom:100rpx;">
+      <block wx:for='{{replys}}' wx:for-item="reply" wx:for-index='replyitem' wx:key="relist">
+        <navigator url="/application/pages/sns/detail/index?id={{reply.parentid}}" class="recommend cboth" open-type="navigate">
+          <view class="fleft swidth">
+            <view class="s1 cboth fhidden"><text>@{{reply.parentnickname}}：{{reply.content}}</text> </view>
+            <view  class="s2 cboth">话题: {{reply.parenttitle}}</view>
+          </view>
+        </navigator>
+      </block>
+      <view wx:if="{{count['replycount'] > 5}}" class="look-more cboth widthcontrol bgcolor" style="text-align:center;">
+      <navigator url="/application/pages/sns/user/myreplys" open-type="navigate">
+        <text>查看更多</text>
+      </navigator>
+    </view>
+    </view>
+    
+  </view>
+  
+</view>
+<view>
+<include src='/application/pages/sns/common/index.wxml'/>
+</view>

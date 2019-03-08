@@ -1,0 +1,4 @@
+@import "../../../__wuBaseWxss__/0.wxss";
+.com-log .fui-cell-group .fui-cell .fui-cell-label{ width: auto; font-size: 28rpx; }
+.com-log .fui-cell-group .fui-cell .fui-cell-info{ text-align: right; color: #333; font-size: 28rpx; }
+.com-log .fui-list .fui-list-inner .row .row-text{ font-size: 28rpx; color: #999 }

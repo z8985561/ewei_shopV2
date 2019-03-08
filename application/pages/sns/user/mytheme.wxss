@@ -1,0 +1,12 @@
+.clear-both {clear: both;}
+.float-left {float: left;}
+.not {width: 100%;height: 20rpx;background-color: #F2F2F2;}
+.image-user {width: 120rpx;height: 120rpx;border-radius: 50%;align: center; }
+.info {margin-left:30rpx;margin-top: 30rpx;}
+.infos {margin-left: 30rpx;margin-top: 10rpx;font-size: 35rpx;color: #555555;}
+.user-info {width: 100%;margin-top:10rpx;font-size:31rpx;}
+.title {margin-left:20rpx;font-size:36rpx;margin-top:20rpx;}
+.tbimg {width: 55rpx; height:55rpx;}
+.content {margin:15rpx 0 20rpx 20rpx;font-size: 34rpx;color: #555555;}
+.topic-param {width: 100%;border-top: 1rpx solid #DCDCDC;}
+.param {width: 49%;height: 90rpx;line-height: 90rpx;text-align: center;font-size: 33rpx;} 

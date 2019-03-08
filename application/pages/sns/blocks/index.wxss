@@ -1,0 +1,20 @@
+.float-left {float: left;}
+.cboth{clear:both;}
+page{height: 100%;display: block;min-height: 100%;background-color: white;}
+.left-navigation {width: 25%;height: 100%;background-color: #F2F2F2;font-size:32rpx;}
+.left-block {width: 100%;height: 90rpx;line-height: 100rpx;text-align: center;color: #555555;}
+.on {color: red;font-size: 30rpx;border-left: red solid 5rpx;background-color: white;}
+.right-plate {width: 75%;}
+.recommend {width: 100%;height:150rpx;clear: both;border-bottom:1rpx solid #E8E8E8;}
+.s1 {margin-top: 35rpx;margin-left: 10rpx;font-size: 33rpx;color: #555555;}
+.s2 {margin-top: 10rpx;font-size: 31rpx;color: #555555;}
+.num-text{color:red;}
+.imgclass {margin: 20rpx;width: 110rpx;height: 110rpx;border-radius: 50%;}
+.search{margin-left: 20rpx;margin-top: 15rpx;}
+.input-search {width: 100%;height: 60rpx;border: 4rpx solid #E8E8E8;border-radius: 2rem;}
+.float-left {float: left;}
+.footer{width: 100%;height: 110rpx;position: fixed;bottom: 0;text-align: center;background: #fff;border-top:1rpx solid #EBEBEB;}
+.vimg{height:55rpx;margin-top:10rpx;}
+.selectimg{width:50rpx;height:50rpx;}
+.fonts{font-size: 25rpx;}
+.footer-select{width: 33%;}

@@ -1,0 +1,4 @@
+@import "../../../__wuBaseWxss__/0.wxss";
+.com-down .subtitle{ font-size: 28rpx; color: #999 }
+.com-down .image-32{ width: 32rpx; height: 32rpx }
+wx-image{ vertical-align: top }

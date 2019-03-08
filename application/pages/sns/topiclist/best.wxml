@@ -1,0 +1,89 @@
+<!--pages/topliclist/best.wxml-->
+
+  <view wx:if="{{boardbest}}">
+    <block wx:for='{{boardbest}}' wx:for-item="boardbests" wx:for-index='pos' wx:key="boardbested">
+      <navigator url="/application/pages/sns/detail/index?id={{boardbests.id}}" class="clear-both" wx:if="{{boardbests.isbest == 1}}">
+        <view class="not"></view>
+        <view>
+          <view class="info">
+            <image class="image-user float-left" src="{{boardbests.avatar}}"></image>
+            <view class="float-left infos">
+              <view class="user-info">{{boardbests.nickname}}</view>
+              <view class="user-info">{{boardbests.createtime}}</view> 
+            </view>
+          </view>
+          <view class="clear-both infos">
+            <view class="title"><text wx:if="{{boardbests.isboardbest == 1 || boardbests.isbest == 1}}"  class="best">精</text>{{boardbests.title}}</view>
+            <view wx:if="{{boardbests['images']}}" class="cimages">
+              <block wx:for='{{boardbests["images"]}}' wx:for-item="boardbest" wx:for-index='pos' wx:key="boardbested">
+                <image src="{{boardbest}}" mode="widthFix" class="content-images"></image>
+              </block>
+            </view>
+            <view class="content">{{boardbests.content}}</view>
+          </view>
+        </view>
+        <view class="topic-param"><text></text>
+          <view class="float-left param">
+            <image class="tbimg" src="/static/images/pl.png"></image>
+            <text>(0)</text>
+          </view>
+          <view class="float-left param">
+            <image class="tbimg" src="/static/images/dz.png"></image>
+            <text>(0)</text>
+          </view>
+          <view class="float-left param">
+            <image class="tbimg" src="/static/images/ts.png"></image>
+            <text>(0)</text>
+          </view>
+        </view>
+      </navigator>
+    </block>
+  </view> 
+<view wx:if="{{post}}">
+  <block wx:for='{{post}}' wx:for-item="posts" wx:for-index='pos' wx:key="posted">
+    <navigator url="/application/pages/sns/detail/index?id={{posts.id}}" class="clear-both" wx:if="{{posts.isboardbest == 1 && posts.isbest == 0}}">
+      <view class="not"></view>
+      <view>
+        <view class="info">
+          <image class="image-user float-left" src="{{posts.avatar}}"></image>
+          <view class="float-left infos">
+            <view class="user-info">{{posts.nickname}}</view>
+            <view class="user-info">{{posts.createtime}}</view> 
+          </view>
+        </view>
+        <view class="clear-both infos">
+          <view class="title"><text wx:if="{{posts.isboardbest == 1 || posts.isbest == 1}}"  class="best">精</text>{{posts.title}}</view>
+          <view wx:if="{{posts['images']}}" class="cimages">
+            <block wx:for='{{posts["images"]}}' wx:for-item="post" wx:for-index='pos' wx:key="posted">
+              <image src="{{post}}" mode="widthFix" class="content-images"></image>
+            </block>
+          </view>
+          <view class="content">{{posts.content}}</view>
+        </view>
+      </view>
+      <view class="topic-param"><text></text>
+        <view class="float-left param">
+          <image class="tbimg" src="/static/images/pl.png"></image>
+          <text>(0)</text>
+        </view>
+        <view class="float-left param">
+          <image class="tbimg" src="/static/images/dz.png"></image>
+          <text>(0)</text>
+        </view>
+        <view class="float-left param">
+          <image class="tbimg" src="/static/images/ts.png"></image>
+          <text>(0)</text>
+        </view>
+      </view>
+    </navigator>
+  </block>
+</view> 
+
+<view wx:if="{{boardbest == '' && post == ''}}" class="clear-both">
+  <view class="not"></view>
+  <view></view>
+  <view style="color:#555555;text-align:center;margin-top:100rpx">
+  
+    <text>暂时没有任何精华</text>
+  </view>
+</view>

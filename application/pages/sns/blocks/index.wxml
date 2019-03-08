@@ -1,0 +1,41 @@
+  <view class="left-navigation float-left">
+    <view wx:if="{{ids == 0}}" data-pid="0" bindtap="changeCate" hoverClass='none' class="left-block on">
+      <text>全部分类</text>
+    </view>
+    <view wx:else data-pid="0" bindtap="changeCate" hoverClass='none' class="left-block">
+      <text>全部分类</text>
+    </view>
+    <block wx:for='{{cate}}' wx:for-item="cates" wx:for-index='cateitem' wx:key="catelist">
+    <view wx:if="{{cates.id == ids}}" data-pid="{{cates.id}}" bindtap="changeCate" hoverClass='none' class="left-block on" open-type="redirect" type="redirect">
+      <text>{{cates.name}}</text>
+    </view>
+    <view wx:else class="left-block" data-pid="{{cates.id}}" bindtap="changeCate" hoverClass='none' open-type="redirect" type="redirect" >
+      <text>{{cates.name}}</text>
+    </view>
+    </block>
+    
+  </view>
+  <view class="right-plate float-left">
+    <view class="float-left search">
+    <!-- <form>
+      <input type="text" class="input-search" cursor-spacing="30" confirm-type="true" placeholder="输入关键字..."></input>
+    </form> -->
+    </view>
+    <block wx:for='{{rec}}' wx:for-item="recs" wx:for-index='recitem' wx:key="reclist">
+    <view wx:if="{{ids == recs.cid || ids == '0'}}">
+    <navigator url="/application/pages/sns/topiclist/index?id={{recs.id}}" class="recommend" open-type="navigate">
+      <view class="float-left">
+        <image class="imgclass" src="{{recs.logo}}"></image>
+      </view>
+      <view class="float-left">
+        <view class="s1 cboth">{{recs.title}}</view>
+        <view  class="s2 cboth">话题数:<text class="num-text" decode="{{true}}">{{recs.postcount}} &nbsp;</text>  关注数:<text class="num-text">{{recs.followcount}}</text></view>
+      </view>
+    </navigator>
+    </view>
+    </block>
+    
+  </view>
+  <view>
+  <include src='/application/pages/sns/common/index.wxml'/>
+  </view>

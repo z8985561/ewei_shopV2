@@ -1,0 +1,75 @@
+<view class='fui-page fui-page-current page-commission-myshop'>
+  <view class='fui-content navbar'>
+      <view class="myshop-header">
+          <view class="image">
+            <image src="{{shop.img}}"></image>
+          </view>
+          <view class="menus">
+              <view class='shopname'>
+                  <text>{{shop.name}}</text>
+              </view>
+              <view class="shoplogo">
+                  <image src="{{shop.logo}}"></image>
+              </view>
+              <view class="nav">
+                  <view class="ptext">{{goodscount}}</view>
+                  <text class="ptext">全部宝贝</text>
+              </view>
+              <view class="nav btn-favorite">
+                  <view><image style='height:32rpx;width:32rpx;' src='/static/images/icon/favor.png'></image></view>
+                  <text class='ptext'>收藏本店</text>
+              </view>
+              <block wx:if="{{mid==member.id && member.isagent==1 && member.status==1}}">
+                <view class="nav btn-qrcode" bindtap='mcodeTap'>
+                  <view><image style='height:32rpx;width:32rpx;' src="/static/images/icon-red/code.png"></image></view>
+                  <text class='ptext'>二维码</text> 
+                </view>
+              </block>
+              <block wx:else>
+                <view class="nav btn-qrcode" bindtap='codeTap'>
+                  <view><image style='height:32rpx;width:32rpx;' src="/static/images/icon-red/code.png"></image></view>
+                  <text class='ptext'>二维码</text> 
+                </view>
+              </block>
+          </view>
+      </view>
+      <include src="/pages/index/search.wxml" />
+      <include src="/pages/index/cube.wxml" />
+      <include src="/page/index/banner.wxml" />
+      <view class="fui-line" style="background: #f4f4f4;">
+        <view class="text text-danger">
+          <view class="icon icon-hotfill"></view>
+        </view>
+      </view>
+      <view class="fui-goods-group block" id='container'>
+      <block wx:for="{{list}}" wx:for-item='item' wx:for-index='index' wx:key="*this">
+         <view class='fui-goods-item'>
+            <navigator hoverClass="none" url="/pages/goods/detail/index?id={{item.id}}&frommyshop={{fromshop}}">
+                <view class="image" style="background-image:url({{item.thumb}})"></view>
+            </navigator>
+            <view class='detail'>
+                <block wx:if="{{item.saleout}}">
+                    <image src="{{item.saleout}}" class="salez"></image>
+                </block>
+                <navigator hoverClass="none" url="/pages/goods/detail/index?id={{item.id}}">
+                    <view class='name'>
+                        {{item.title}}
+                    </view>
+                </navigator>
+                <view class='price'>
+                    <view class='text'>
+                        ￥{{item.minprice}}
+                    </view>
+                </view>
+            </view>
+         </view>
+      </block>
+      </view>
+  </view>
+  <view id='cover' style="display:none;">
+    <view class='fui-mask-m visible'></view>
+    <view class='arrow'></view>
+    <view class='content'>请点击右上角<br/>通过【收藏】<br/>方便下次浏览</view>
+  </view>
+</view>
+

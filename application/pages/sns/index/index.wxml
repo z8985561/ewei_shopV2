@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<view>
+  <swiper class="swiper" indicator-dots="true" autoplay="true" interval="2000" duration="1000"> 
+    <block wx:if='{{advs != 0}}' wx:for='{{advs}}' wx:for-item='item' wx:for-index='items' wx:key="list">
+    <swiper-item>  
+    <image class="imgindex" src="{{item.thumb}}" mode="widthFix"></image>
+    </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="fui-icon-group noborder circle">
+  <block wx:if="{{cate !=0}}" wx:for='{{cate}}' wx:for-item="cates" wx:for-index='cateitems' wx:key="lists">
+  <navigator url="/application/pages/sns/blocks/index?id={{cates.id}}" open-type="navigate">
+    <view class="plateclass">
+      <image class="imgplate" src="{{cates.thumb}}" ></image>
+      <text class="platename" >{{cates.name}}</text>
+    </view>
+  </navigator>
+  </block>
+</view>
+<view class="kk float-left"></view>
+<view class="snsplate fui-cell-group">
+  <view class="plateall">
+    <view style="width:100%;height:40rpx;">
+      <view class="ase float-left"> 推荐版块</view>
+      <navigator url="/application/pages/sns/blocks/index?id=0" open-type="navigate"><view class="ass rfloat"> 全部  ></view></navigator>
+    </view>
+  </view>
+  <block wx:if="{{rec !=0}}" wx:for='{{rec}}' wx:for-item="recom" wx:for-index='recs' wx:key="reclist">
+  <navigator class="recommend" url="/application/pages/sns/topiclist/index?id={{recom.id}}" open-type="navigate" type="navigate">
+    <view class="float-left" >
+      <image class="imgclass" src="{{recom.logo}}"></image>
+    </view>
+    <view class="float-left">
+      <view class="s1 clear-both">{{recom.title}}</view>
+      <view class="s2 clear-both"> <text decode="{{true}}">话题数:{{recom.postcount}} &nbsp;</text>   <text> </text><text>关注数:{{recom.followcount}}</text> </view>
+    </view>
+  </navigator>
+  </block>
+</view>
+<view>
+<include src='/application/pages/sns/common/index.wxml'/>
+</view>
+

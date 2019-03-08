@@ -1,0 +1,32 @@
+<!--pages/common/index.wxml-->
+<view class="footer ">
+  <view class="float-left footer-select">
+    <navigator url="/pages/index/index" hoverClass='none'  class="" open-type="redirect" type="redirect">
+      <view class="vimg"><image src="/static/images/icon/home.png" class="selectimg"></image></view> 
+      <view class="fonts"><text >首页</text></view>
+    </navigator>
+  </view>
+
+  <view class="float-left footer-select" wx:if="{{root != 'index'}}">
+    <navigator url="/application/pages/sns/index/index" hoverClass='none'  class="" open-type="redirect" type="redirect">
+      <view class="vimg"><image src="/static/images/icon/cate.png" class="selectimg"></image></view> 
+      <view class="fonts"><text >版块</text></view>
+    </navigator>
+  </view>
+  <view class="float-left footer-select" wx:if="{{root == 'index'}}">
+      <view class="vimg"><image src="/static/images/icon-red/cate.png" class="selectimg"></image></view>
+      <view class="fonts"><text style="color:red;">版块</text></view>
+  </view>
+
+  <view class="float-left footer-select" wx:if="{{root != 'userinfo' || count['openid'] != count['uopenid']}}">
+  <navigator url="/application/pages/sns/user/index?id={{user[0]['id']}}" hoverClass='none'   class="" open-type="navigate">
+     <view class="vimg"><image src="/static/images/icon/people.png" class="selectimg"></image></view> 
+    <view class="fonts"><text >我的</text></view>
+  </navigator>
+  </view>
+  <view class="float-left footer-select" wx:if="{{root == 'userinfo' && count['openid'] == count['uopenid']}}">
+     <view class="vimg"><image src="/static/images/icon-red/people.png" class="selectimg"></image></view> 
+    <view class="fonts"><text style="color:red;">我的</text></view>
+  </view>
+</view>
+  

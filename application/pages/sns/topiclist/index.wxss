@@ -1,0 +1,37 @@
+.topic {width: 100%;}
+.clear-both {clear: both;}
+.float-left {float: left;}
+.float-right {float: right;}
+.recommend {width: 100%;height: 180rpx;color:#fff;}
+.boarts {margin-top: 15rpx;matgin-left:30rpx;}
+.s1 {margin-top: 35rpx;font-size: 15px;}
+.s2 {margin-top: 15rpx;font-size: 13px;}
+.imgclass {margin: 30rpx;width: 120rpx;height: 120rpx;border-radius: 50%;}
+.topics {width: 32%;height: 80rpx;line-height: 80rpx;text-align: center;font-size: 30rpx;color: #555555;}
+.cimages{margin-left: 10rpx;width: 100%;margin-top:30rpx;padding-bottom:20rpx;}
+.content-images{width:45%;margin-left:10rpx;}
+.bests {height: 70rpx;font-size: 30rpx;margin-left:15rpx;line-height:70rpx;border-bottom:1rpx solid #EBEBEB;}
+.followbtn{width:150rpx;height:70rpx;line-height:70rpx;align:center;font-size:30rpx;background:orange;margin-top:70rpx;margin-right:20rpx;color:#fff;}
+.boardbest {font-size: 30rpx;background-color: orange;color: white;font-weight: bold;-webkit-border-radius: 0.3rem;border-radius:0.3rem;padding: 1rpx 10rpx;margin-left: 10rpx;margin-right:10rpx;}
+.best {font-size: 30rpx;background-color: #1C86EE;color: white;font-weight: bold;-webkit-border-radius: 0.3rem;border-radius:0.3rem;padding: 1rpx 10rpx;margin-left: 10rpx;margin-right:10rpx;}
+.isbest {font-size: 30rpx;background-color: orange;color: white;font-weight: bold;-webkit-border-radius: 0.3rem;border-radius:0.3rem;padding: 1rpx 10rpx;margin-left: 10rpx;margin-right:10rpx;}
+.listimg {width:38rpx;height:38rpx;vertical-align:text-bottom;}
+.on {color: orange;border-bottom: 5rpx solid orange;}
+.not {width: 100%;height: 20rpx; background-color: #E3E3E3;}
+.image-user {width: 120rpx;height: 120rpx;border-radius: 50%;align: center; }
+.info {padding-left:30rpx;padding-top: 30rpx;}
+.infos {padding-top: 10rpx;font-size: 35rpx;color: #555555;}
+.user-info {width: 100%;margin-top:10rpx;font-size:31rpx;}
+.title {margin-left:20rpx;font-size:36rpx;margin-top:10rpx;}
+.tbimg {width: 38rpx; height:35rpx;vertical-align:text-bottom;margin-right:10rpx;}
+.content {padding:15rpx 25rpx 20rpx 0rpx;font-size: 34rpx;color: #555555;}
+.topic-param {width: 100%;border-top: 3rpx solid #DCDCDC;}
+.param {width: 32%;height: 90rpx;line-height: 90rpx;font-size: 35rpx;text-align:center;color: #515151;}
+.board{width: 120rpx;height: 120rpx;border-radius: 50%;background-color:#0099cc;line-height:120rpx;text-align: center;}
+.publish-topic{position: fixed;right: 50rpx;bottom: 150rpx;}
+.footer{width: 100%;height: 110rpx;position: fixed;bottom: 0;text-align: center;background: #fff;border-top:1rpx solid #EBEBEB;}
+.vimg{height:55rpx;margin-top:5rpx;}
+.selectimg{width:50rpx;height:50rpx;}
+.fonts{font-size: 25rpx;}
+.footer-select{width: 32%;}
+.page-body {overflow-x: hidden;}

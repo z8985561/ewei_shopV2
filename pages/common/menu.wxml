@@ -1,0 +1,42 @@
+<view>
+  <view style='height:100rpx;'></view>
+  <view class='fui-navbar'>
+    <navigator hoverClass='none' url='/pages/index/index' class='nav-item {{route != "home" || "active"}}' openType='redirect'>
+      <image class='icon' src='{{route == "home"?icons.home_red:icons.home}}'></image>
+      <text class='label'>商城首页</text>
+    </navigator>
+    <navigator hoverClass='none' openType='redirect' class='nav-item {{route != "category" || active}}' url='/pages/shop/caregory/index'>
+      <image class='icon' src='{{route == "category"?icons.cate_red:icons.cate}}'></image>
+      <text class='label'>全部分类</text>
+    </navigator>
+    <navigator hoverClass='none' openType='redirect' class='nav-item {{route != "cart" || "active"}}' url='/pages/member/cart/index'>
+      <block wx:if='{{cartcount > 0}}'>
+        <view class='badge'>{{cartcount}}</view>
+      </block>
+      <image class='icon' src='{{route == "cart"?icons.cart_red:icons.cart}}'></image>
+      <text class='label'>购物车</text>
+    </navigator>
+    <navigator class='nav-item'>
+
+      <button style='display:inline;padding:0px;margin:0px;line-height:inherit;height:100%;position:relative;border-radius:0px;border:none;background-color:#fff;' class='button-item' open-type="contact" MsgType="miniprogrampage" send-message-title="{{member.nickname}}"
+        send-message-img="" show-message-card="true">
+        <image class='icon' src='/static/images/icon/kefu.png'></image>
+        <text class='label' style='color:#999;'>客服</text>
+      </button>
+    </navigator>
+    <navigator wx:if="{{!modelShow}}" hoverClass='none' openType='redirect' class='nav-item {{route != "member" || active}}' url='/pages/member/index/index'>
+      <image class='icon' src='{{route == "member"?icons.people_red:icons.people}}'></image>
+      <text class='label'>我的</text>
+    </navigator>
+        <navigator class='nav-item' wx:else>
+
+      <button style='display:inline;padding:0px;margin:0px;line-height:inherit;height:100%;position:relative;border-radius:0px;border:none;background-color:#fff;' class='button-item' open-type="getUserInfo" bindgetuserinfo='userinfo'>
+        <image class='icon'  src='{{route == "member"?icons.people_red:icons.people}}'></image>
+        <text class='label' style='color:#999;'>我的</text>
+      </button>
+    </navigator>
+  </view>
+</view>
+<view class='fui-toast {{FoxUIToast.show?"in":"out"}}'>
+  <view class='text'>{{FoxUIToast.text}}</view>
+</view>
